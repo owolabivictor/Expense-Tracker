@@ -213,3 +213,9 @@ button[type="submit"]:hover {
 #message i {
   margin-right: 5px;
 }
+
+@media (max-width: 486px) {
+  main {
+    padding: 18px;
+  }
+}
