@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pocketwise-Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div id="message"></div>
+    <main>
+      <div class="header">
+        <div class="logo">
+          <i class="fa fa-wallet"></i>
+        </div>
+        <h2>Pocketwise</h2>
+        <p>Know where your money goes.</p>
+        <span class="default">
+          <i class="fa fa-wallet"></i> Default Currency: Nigeria Naira (&#8358;)
+        </span>
+      </div>
+      <div class="proceed-options">
+        <button class="login selected option-login">Login</button>
+        <button class="sign-up option-sign-up">Sign Up</button>
+      </div>
+
+      <form id="sign-up" class="hide">
+        <div class="form-input">
+          <label for="sign-up-name">Full Name</label>
+          <div class="input-container">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="sign-up-name" placeholder="John Doe" />
+          </div>
+          <small class="error"></small>
+        </div>
+
+        <div class="form-input">
+          <label for="sign-up-email">Email Address</label>
+          <div class="input-container">
+            <i class="fa fa-envelope"></i>
+            <input
+              type="email"
+              id="sign-up-email"
+              placeholder="You@example.com"
+            />
+          </div>
+
+          <small class="error"></small>
+        </div>
+
+        <div class="form-input">
+          <label for="sign-up-password">Password</label>
+          <div class="input-container">
+            <i class="fa fa-lock"></i>
+            <input
+              type="password"
+              id="sign-up-password"
+              placeholder="Enter your password"
+            />
+            <i class="fa fa-eye-slash password-reveal"></i>
+          </div>
+          <small class="error"></small>
+        </div>
+
+        <button type="submit" id="sign-up-btn">
+          Create Free Account <i class="fa fa-arrow-right"></i>
+        </button>
+
+        <p class="switch">
+          Already have an account? <span class="login">Log In</span>
+        </p>
+      </form>
+
+      <form id="login">
+        <small class="error-credentials">Invalid credentials</small>
+        <div class="form-input">
+          <label for="email">Email Address</label>
+          <div class="input-container">
+            <i class="fa fa-envelope"></i>
+            <input type="email" id="email" placeholder="You@example.com" />
+          </div>
+        </div>
+
+        <div class="form-input">
+          <label for="password">Password</label>
+          <div class="input-container">
+            <i class="fa fa-lock"></i>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+            />
+            <i class="fa fa-eye-slash password-reveal"></i>
+          </div>
+        </div>
+
+        <button type="submit">Log In <i class="fas fa-arrow-right"></i></button>
+
+        <p class="switch">
+          Don't have an account? <span class="sign-up">Sign up</span>
+        </p>
+      </form>
+    </main>
+    <script type="module" src="auth.js"></script>
+  </body>
+</html>
