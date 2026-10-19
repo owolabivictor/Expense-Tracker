@@ -90,6 +90,7 @@
             <i class="fa fa-envelope"></i>
             <input type="email" id="email" placeholder="You@example.com" />
           </div>
+          <small class="error"></small>
         </div>
 
         <div class="form-input">
@@ -103,9 +104,12 @@
             />
             <i class="fa fa-eye-slash password-reveal"></i>
           </div>
+          <small class="error"></small>
         </div>
 
-        <button type="submit">Log In <i class="fas fa-arrow-right"></i></button>
+        <button type="submit" id="login-btn">
+          Log In <i class="fas fa-arrow-right"></i>
+        </button>
 
         <p class="switch">
           Don't have an account? <span class="sign-up">Sign up</span>
@@ -113,5 +117,6 @@
       </form>
     </main>
     <script type="module" src="auth.js"></script>
+    <script type="module" src="js/login.js"></script>
   </body>
 </html>

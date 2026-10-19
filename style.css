@@ -133,6 +133,11 @@ input {
 
 .error-credentials {
   display: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: #fef2f2;
+  color: #be2026;
 }
 
 .error {

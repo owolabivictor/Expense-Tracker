@@ -2,11 +2,9 @@ import { SUPABASE_KEY, SUPABASE_URL } from "./js/config.js";
 
 const loginBtn = document.querySelectorAll(".login");
 const signUp = document.querySelectorAll(".sign-up");
-const formLogin = document.getElementById("login");
 const formSignUp = document.getElementById("sign-up");
-const error = document.querySelectorAll(".error");
 const signUpBtn = document.getElementById("sign-up-btn");
-const messageDiv = document.getElementById("message");
+export const messageDiv = document.getElementById("message");
 
 const passwordRevealer = document.querySelectorAll(".password-reveal");
 
@@ -79,8 +77,6 @@ async function createNewUser(newUser) {
     const data = await response.json();
 
     showSuccess("Account created successfully!");
-
-    console.log(data);
   } catch (error) {
     console.log(error);
     showError("Failed attempt! Try again");
@@ -93,7 +89,7 @@ async function createNewUser(newUser) {
 }
 
 // Check Empty Input Function
-function areFieldsFilled(array) {
+export function areFieldsFilled(array) {
   let areFieldsFilled = true;
 
   array.forEach((input) => {
@@ -148,10 +144,11 @@ passwordRevealer.forEach((passwordRevealer) => {
 });
 
 //Success message
-function showSuccess(message) {
+export function showSuccess(message) {
   messageDiv.style.display = "block";
   messageDiv.innerHTML = `<i class="fa fa-check"></i> ${message}`;
   messageDiv.style.color = "#01554e";
+  messageDiv.style.backgroundColor = "#eff4ff";
 
   setTimeout(() => {
     messageDiv.style.display = "none";
@@ -159,10 +156,11 @@ function showSuccess(message) {
 }
 
 // Error message
-function showError(message) {
+export function showError(message) {
   messageDiv.style.display = "block";
   messageDiv.innerHTML = `<i class="fa fa-xmark"></i> ${message}`;
-  messageDiv.style.color = "#be2026";
+  messageDiv.style.color = "#CC525F";
+  messageDiv.style.backgroundColor = "#FEF2F2";
 
   setTimeout(() => {
     messageDiv.style.display = "none";
