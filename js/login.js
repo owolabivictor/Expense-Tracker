@@ -1,5 +1,12 @@
 import { SUPABASE_KEY, SUPABASE_URL } from "./config.js";
-import { areFieldsFilled, showError, showSuccess } from "../auth.js";
+import {
+  areFieldsFilled,
+  showError,
+  showSuccess,
+  resetButton,
+  setButtonLoading,
+} from "./ui.js";
+import { saveSession } from "./js/session.js";
 
 const formLogin = document.getElementById("login");
 const errorCredentials = document.querySelector(".error-credentials");
@@ -19,10 +26,7 @@ function handleLogin(e) {
   if (!fieldsOk) return;
   errorCredentials.style.display = "none";
 
-  loginBtn.innerHTML = "Logging in...";
-  loginBtn.style.opacity = "0.6";
-  loginBtn.disabled = true;
-  loginBtn.style.cursor = "not-allowed";
+  setButtonLoading(loginBtn, "Logging in...");
 
   const user = {
     email: email.value.trim(),
@@ -54,21 +58,16 @@ async function loginUser(user) {
     }
 
     const data = await response.json();
-
+    saveSession(data);
     showSuccess("Login successfully!");
 
-    console.log(data);
-    // setTimeout(() => {
-    //   window.location.href = "dashboard.html";
-    // }, 3000);
+    setTimeout(() => {
+      window.location.href = "pages/dashboard.html";
+    }, 3000);
   } catch (error) {
     errorCredentials.style.display = "none";
-    console.log(error);
     showError("Failed attempt! Try again");
   } finally {
-    loginBtn.innerHTML = `Log In <i class="fa fa-arrow-right"></i>`;
-    loginBtn.style.opacity = "1";
-    loginBtn.disabled = false;
-    loginBtn.style.cursor = "pointer";
+    resetButton(loginBtn, `Log In <i class="fa fa-arrow-right"></i>`);
   }
 }
