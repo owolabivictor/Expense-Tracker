@@ -3,7 +3,163 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pocketwise Expense Tracker</title>
+    <title>Pocketwise</title>
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/expense.css" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
-  <body></body>
+  <body>
+    <!-- <dialog> is a built-in pop-up box. It stays hidden until JavaScript opens it. -->
+    <!-- aria-labelledby tells screen readers which heading names this box. -->
+    <dialog
+      id="logout-dialog"
+      class="confirm-dialog"
+      aria-labelledby="logout-title"
+    >
+      <!-- A round red icon at the top, for visual attention -->
+      <div class="confirm-icon">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </div>
+
+      <h3 id="logout-title">Log out of Pocketwise?</h3>
+      <p>You'll need to log in again to see your expenses.</p>
+
+      <!-- Two buttons side by side. type="button" means they don't submit any form. -->
+      <div class="confirm-actions">
+        <button id="logout-cancel" class="btn-cancel">Cancel</button>
+        <button id="logout-confirm" class="btn-danger">Log out</button>
+      </div>
+    </dialog>
+
+    <button type="button" id="addExpense" aria-label="Add expense">
+      <i class="fa fa-plus"></i>
+    </button>
+    <header>
+      <nav>
+        <div class="logo">
+          <div class="logo-img">
+            <i class="fa fa-wallet"></i>
+          </div>
+          Pocketwise
+        </div>
+
+        <button id="logout">Logout</button>
+      </nav>
+    </header>
+    <main>
+      <p id="current-date"></p>
+      <h2 id="greeting-message"></h2>
+
+      <div class="expense-summary">
+        <div class="expense-summary-month">
+          <p>Spent this month</p>
+          <p id="month-year"></p>
+        </div>
+
+        <h1 id="total-amount">0.00</h1>
+      </div>
+
+      <div class="spending-limit">
+        <div class="spending-limit-container">
+          <h3>Spending limit</h3>
+          <button id="edit">Edit</button>
+        </div>
+
+        <div class="spent-amount">
+          <p id="amount-spent"></p>
+          <div id="percentage">
+            <div class="percentage-width"></div>
+          </div>
+          <div class="percentage-info">
+            <p id="percentage-used"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="category">
+        <h3 class="category-heading">Top categories</h3>
+        <div class="category-list"></div>
+      </div>
+
+      <div class="expense-container">
+        <h3 class="expense-container-heading">Recent expenses</h3>
+        <ul class="expense-list"></ul>
+        <div class="empty-state" id="empty-expenses">
+          <div class="empty-icon">
+            <i class="fa-solid fa-receipt"></i>
+          </div>
+          <h4>No expenses this month</h4>
+          <p>Add your first expense to start tracking where your money goes.</p>
+          <button type="button" class="empty-btn" id="empty-add">
+            <i class="fa-solid fa-plus"></i> Add expense
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <div class="sheet-overlay" id="sheet-overlay">
+      <div class="sheet">
+        <div class="sheet-header">
+          <h3>Add expense</h3>
+          <button id="sheet-close">&times;</button>
+        </div>
+
+        <form id="expense-form">
+          <label for="amount">Amount (&#8358;)</label>
+          <input
+            id="amount"
+            name="amount"
+            type="number"
+            step="0.01"
+            placeholder="0.00"
+          />
+
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <option value="">Choose a category</option>
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Airtime &amp; Data</option>
+            <option>Shopping</option>
+            <option>Bills</option>
+            <option>Education</option>
+            <option>Health</option>
+            <option>Fun</option>
+            <option>Other</option>
+          </select>
+
+          <label for="date">Date</label>
+          <input id="date" name="date" type="date" />
+
+          <label for="note">Note (optional)</label>
+          <input
+            id="note"
+            name="note"
+            type="text"
+            maxlength="100"
+            placeholder="What was this for?"
+          />
+
+          <small id="form-error"></small>
+          <button type="submit" class="sheet-save" id="sheet-save">
+            Save expense
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="../js/dashboard.js"></script>
+  </body>
 </html>

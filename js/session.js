@@ -8,3 +8,15 @@ export function saveSession(data) {
 
   localStorage.setItem("pocketwise_session", JSON.stringify(session));
 }
+
+export function getSession() {
+  try {
+    return JSON.parse(localStorage.getItem("pocketwise_session"));
+  } catch {
+    return null;
+  }
+}
+
+export function clearSession() {
+  localStorage.removeItem("pocketwise_session");
+}

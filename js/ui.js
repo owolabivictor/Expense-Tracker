@@ -10,7 +10,7 @@ export function showSuccess(message) {
 
   setTimeout(() => {
     messageDiv.style.display = "none";
-  }, 2500);
+  }, 1500);
 }
 
 // Error message
@@ -92,4 +92,56 @@ export function resetButton(btn, text) {
   btn.style.opacity = "1";
   btn.disabled = false;
   btn.style.cursor = "pointer";
+}
+
+export function expenseIconSelector(category) {
+  switch (category) {
+    case "Food":
+      return "fa-utensils";
+      break;
+    case "Transport":
+      return "fa-bus";
+      break;
+    case "Airtime & Data":
+      return "fa-wifi";
+      break;
+    case "Education":
+      return "fa-book-open";
+      break;
+    case "Shopping":
+      return "fa-bag-shopping";
+      break;
+    case "Bills":
+      return "fa-file-invoice";
+      break;
+    case "Health":
+      return "fa-heart-pulse";
+      break;
+    case "Fun":
+      return "fa-gamepad";
+      break;
+    default:
+      return "fa-ellipsis";
+  }
+}
+
+export function nairaFormatter(amount) {
+  return new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: "NGN",
+    minimumFractionDigits: 2,
+  }).format(amount);
+}
+
+//Handle Empty state
+export function showEmptyState() {
+  document.getElementById("empty-expenses").style.display = "flex";
+  document.querySelector(".spending-limit").style.display = "none";
+  document.querySelector(".category").style.display = "none";
+}
+
+export function removeEmptyState() {
+  document.getElementById("empty-expenses").style.display = "none";
+  document.querySelector(".spending-limit").style.display = "flex";
+  document.querySelector(".category").style.display = "block";
 }

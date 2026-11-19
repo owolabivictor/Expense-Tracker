@@ -6,7 +6,7 @@ import {
   resetButton,
   setButtonLoading,
 } from "./ui.js";
-import { saveSession } from "./js/session.js";
+import { saveSession } from "./session.js";
 
 const formLogin = document.getElementById("login");
 const errorCredentials = document.querySelector(".error-credentials");
@@ -62,11 +62,11 @@ async function loginUser(user) {
     showSuccess("Login successfully!");
 
     setTimeout(() => {
-      window.location.href = "pages/dashboard.html";
-    }, 3000);
+      window.location.replace("pages/dashboard.html");
+    }, 2000);
   } catch (error) {
     errorCredentials.style.display = "none";
-    showError("Failed attempt! Try again");
+    showError("Login failed. Try again");
   } finally {
     resetButton(loginBtn, `Log In <i class="fa fa-arrow-right"></i>`);
   }
