@@ -5,6 +5,8 @@ import {
   resetButton,
   showEmptyState,
   removeEmptyState,
+  showLoader,
+  hideLoader,
 } from "./ui.js";
 import { getSession, clearSession } from "./session.js";
 import { SUPABASE_URL, SUPABASE_KEY } from "./config.js";
@@ -86,13 +88,10 @@ function renderExpenses() {
   });
   calculateTotalExpense();
   displayTopCategories();
-  if (expenses.length === 0) {
-    showEmptyState();
-  } else {
+  if (expenses.length !== 0) {
     removeEmptyState();
   }
 }
-renderExpenses();
 
 // Format expense date - Today, Yesterday, Other
 function todayYesterdayCheck(date, day) {
@@ -244,10 +243,15 @@ form.addEventListener("submit", async (e) => {
 
     // Only after it's saved: add it to the page
     expenses.unshift(saved);
-    setTimeout(() => closeSheet(), 1000);
+    resetButton(saveBtn, "Saved!");
+    setTimeout(() => {
+      closeSheet();
+      resetButton(saveBtn, "Save expense");
+    }, 1000);
     refreshDashboard();
   } catch (error) {
     formError.textContent = "Could not save. Try again.";
+    resetButton(saveBtn, "Save expense");
   } finally {
     resetButton(saveBtn, "Save expense");
   }
@@ -275,6 +279,7 @@ async function saveExpense(expense) {
 }
 
 async function loadExpenses() {
+  showLoader();
   const response = await fetch(
     `${SUPABASE_URL}/rest/v1/expenses?select=*&order=expense_date.desc`,
     {
@@ -295,7 +300,12 @@ async function loadExpenses() {
 async function startDashboard() {
   try {
     expenses = await loadExpenses();
-    refreshDashboard();
+    hideLoader();
+    if (expenses.length === 0) {
+      showEmptyState();
+    } else {
+      refreshDashboard();
+    }
   } catch (error) {
     console.log(error);
   }

@@ -145,3 +145,17 @@ export function removeEmptyState() {
   document.querySelector(".spending-limit").style.display = "flex";
   document.querySelector(".category").style.display = "block";
 }
+
+export function showLoader() {
+  document.getElementById("loader").style.display = "block";
+  document.querySelector(".spending-limit").style.display = "none";
+  document.querySelector(".category").style.display = "none";
+  document.querySelector(".expense-container").style.display = "none";
+}
+
+export function hideLoader() {
+  document.getElementById("loader").style.display = "none";
+  document.querySelector(".spending-limit").style.display = "none";
+  document.querySelector(".category").style.display = "none";
+  document.querySelector(".expense-container").style.display = "block";
+}

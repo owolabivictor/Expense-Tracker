@@ -173,10 +173,6 @@ button[type="submit"] {
   transition: 0.3s;
 }
 
-button[type="submit"]:hover {
-  background-color: #01554e;
-}
-
 .switch {
   padding-top: 15px;
   text-align: center;

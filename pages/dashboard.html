@@ -21,6 +21,7 @@
     />
   </head>
   <body>
+    <div id="loader"></div>
     <!-- <dialog> is a built-in pop-up box. It stays hidden until JavaScript opens it. -->
     <!-- aria-labelledby tells screen readers which heading names this box. -->
     <dialog
@@ -68,7 +69,7 @@
           <p id="month-year"></p>
         </div>
 
-        <h1 id="total-amount">0.00</h1>
+        <h1 id="total-amount">&#8358;0.00</h1>
       </div>
 
       <div class="spending-limit">
@@ -118,13 +119,7 @@
 
         <form id="expense-form">
           <label for="amount">Amount (&#8358;)</label>
-          <input
-            id="amount"
-            name="amount"
-            type="number"
-            step="0.01"
-            placeholder="0.00"
-          />
+          <input id="amount" name="amount" type="number" placeholder="0.00" />
 
           <label for="category">Category</label>
           <select id="category" name="category">
