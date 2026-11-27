@@ -152,6 +152,37 @@ button {
   animation: loading 1s linear infinite;
 }
 
+#fetch-error {
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 15px;
+}
+
+#fetch-error i {
+  color: #be2026;
+  font-size: 26px;
+}
+
+#try-again {
+  padding: 10px 15px;
+  background-color: #333;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#try-again:hover {
+  opacity: 0.9;
+}
+
+#try-again:active {
+  opacity: 0.8;
+}
+
 @keyframes loading {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
@@ -170,7 +201,7 @@ button {
     width: 50px;
     background-color: #00685f;
     border-radius: 50%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
@@ -247,6 +278,12 @@ button {
     margin-bottom: 15px;
   }
 
+  .spending-limit,
+  .category,
+  .expense-container {
+    display: none;
+  }
+
   .expense-summary-month {
     display: flex;
     gap: 8px;
@@ -261,7 +298,6 @@ button {
   }
 
   .spending-limit {
-    display: flex;
     flex-direction: column;
     gap: 10px;
   }

@@ -135,27 +135,26 @@ export function nairaFormatter(amount) {
 
 //Handle Empty state
 export function showEmptyState() {
+  document.querySelector(".expense-container").style.display = "block";
   document.getElementById("empty-expenses").style.display = "flex";
-  document.querySelector(".spending-limit").style.display = "none";
-  document.querySelector(".category").style.display = "none";
 }
 
 export function removeEmptyState() {
   document.getElementById("empty-expenses").style.display = "none";
   document.querySelector(".spending-limit").style.display = "flex";
   document.querySelector(".category").style.display = "block";
+  document.querySelector(".expense-container").style.display = "block";
+  document.getElementById("addExpense").style.display = "flex";
 }
 
 export function showLoader() {
   document.getElementById("loader").style.display = "block";
-  document.querySelector(".spending-limit").style.display = "none";
-  document.querySelector(".category").style.display = "none";
-  document.querySelector(".expense-container").style.display = "none";
 }
 
 export function hideLoader() {
   document.getElementById("loader").style.display = "none";
-  document.querySelector(".spending-limit").style.display = "none";
-  document.querySelector(".category").style.display = "none";
-  document.querySelector(".expense-container").style.display = "block";
+}
+
+export function displayError() {
+  document.getElementById("fetch-error").style.display = "flex";
 }

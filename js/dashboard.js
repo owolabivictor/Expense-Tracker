@@ -7,6 +7,7 @@ import {
   removeEmptyState,
   showLoader,
   hideLoader,
+  displayError,
 } from "./ui.js";
 import { getSession, clearSession } from "./session.js";
 import { SUPABASE_URL, SUPABASE_KEY } from "./config.js";
@@ -243,15 +244,12 @@ form.addEventListener("submit", async (e) => {
 
     // Only after it's saved: add it to the page
     expenses.unshift(saved);
-    resetButton(saveBtn, "Saved!");
     setTimeout(() => {
       closeSheet();
-      resetButton(saveBtn, "Save expense");
     }, 1000);
     refreshDashboard();
   } catch (error) {
     formError.textContent = "Could not save. Try again.";
-    resetButton(saveBtn, "Save expense");
   } finally {
     resetButton(saveBtn, "Save expense");
   }
@@ -307,6 +305,8 @@ async function startDashboard() {
       refreshDashboard();
     }
   } catch (error) {
+    hideLoader();
+    displayError();
     console.log(error);
   }
 }
@@ -314,3 +314,8 @@ async function startDashboard() {
 if (session) {
   startDashboard();
 }
+
+document.getElementById("try-again").addEventListener("click", () => {
+  document.getElementById("fetch-error").style.display = "";
+  startDashboard();
+});
